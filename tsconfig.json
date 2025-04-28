@@ -13,7 +13,7 @@
         "@devtools/*": ["devtools/*"]
       },
       "outDir": "./dist",
-      "types": ["vite/client"]
+      "types": ["vite/client", "chrome"]
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]

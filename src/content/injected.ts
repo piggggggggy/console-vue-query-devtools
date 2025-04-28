@@ -1,18 +1,17 @@
+import { QueryDebugMessage } from "@sdk/type";
+
 (function() {
     const trySendQueries = () => {
       const hook = window.__VUE_QUERY_DEVTOOLS__;
       if (hook && hook.getQueries) {
-        const queries = hook.getQueries();
-        window.postMessage({
+        const message: QueryDebugMessage = {
           source: 'console-vue-query-devtools',
           type: 'QUERY_DEBUG_DATA',
-          queries,
-        }, '*');
+          queries: hook.getQueries(),
+        };
+        window.postMessage(message, '*');
       }
     };
   
     setInterval(trySendQueries, 2000);
   })();
-
-
-  
