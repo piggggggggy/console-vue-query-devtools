@@ -7,7 +7,6 @@
     },
     "devDependencies": {
       "@types/chrome": "^0.0.317",
-      "@console-vue-query-devtools/sdk": "*",
       "@console-vue-query-devtools/types": "*"
     }
   }

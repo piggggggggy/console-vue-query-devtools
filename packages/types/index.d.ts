@@ -1,7 +1,7 @@
 import type { QueryClient } from '@tanstack/vue-query';
 
 export interface ConsoleVueQueryDevtoolsHook {
-    registerClient: (client: QueryClient) => void;
+    registerClient: (client: QueryClient | any) => void;
     getQueries: () => ConsoleVueQueryDevtoolsQuery[];
 }
 

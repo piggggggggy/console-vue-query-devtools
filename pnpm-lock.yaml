@@ -23,9 +23,6 @@ importers:
 
   packages/extensions:
     devDependencies:
-      '@console-vue-query-devtools/sdk':
-        specifier: '*'
-        version: link:../sdk
       '@console-vue-query-devtools/types':
         specifier: '*'
         version: link:../types
@@ -42,6 +39,9 @@ importers:
         specifier: '>=2.7.0 <3.0.0'
         version: 2.7.16
     devDependencies:
+      '@console-vue-query-devtools/types':
+        specifier: '*'
+        version: link:../types
       typescript:
         specifier: ^5.2.2
         version: 5.8.3

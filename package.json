@@ -5,8 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:sdk": "pnpm --filter @console-vue-query-devtools/sdk dev",
-    "build:sdk": "pnpm --filter @console-vue-query-devtools/sdk build",
+    "dev:sdk": "pnpm --filter console-vue-query-devtools-sdk dev",
+    "build:sdk": "pnpm --filter console-vue-query-devtools-sdk build",
     "dev:extension": "pnpm --filter @console-vue-query-devtools/extension dev",
     "build:extension": "pnpm --filter @console-vue-query-devtools/extension build",
     "build": "pnpm build:sdk && pnpm build:extension"

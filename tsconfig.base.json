@@ -11,7 +11,7 @@
       "forceConsistentCasingInFileNames": true,
       "baseUrl": ".",
       "paths": {
-        "@console-vue-query-devtools/sdk": ["packages/sdk"],
+        "console-vue-query-devtools-sdk": ["packages/sdk"],
         "@console-vue-query-devtools/extension": ["packages/extension"],
         "@console-vue-query-devtools/types": ["packages/types"],
       },
