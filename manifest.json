@@ -2,9 +2,24 @@
     "manifest_version": 3,
     "name": "Vue Query Devtools (PoC)",
     "version": "0.0.1",
-    "devtools_page": "devtools.html",
+    "description": "Vue Query Devtools (PoC)",
+    "devtools_page": "devtools/devtools.html",
     "permissions": [],
     "icons": {
-        "48": "icon.png"
-    }
+        "48": "assets/icon.png"
+    },
+    "host_permissions": ["<all_urls>"],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content/content-script.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["content/injected.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
