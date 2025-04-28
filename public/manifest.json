@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Vue Query Devtools (PoC)",
+    "name": "Console Vue Query Devtools",
     "version": "0.0.1",
-    "description": "Vue Query Devtools (PoC)",
+    "description": "Console Vue Query Devtools (for cloudforet/console contributors)",
     "devtools_page": "devtools/devtools.html",
     "permissions": [],
     "icons": {
