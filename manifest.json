@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Vue Query Devtools (PoC)",
+    "version": "0.0.1",
+    "devtools_page": "devtools.html",
+    "permissions": [],
+    "icons": {
+        "48": "icon.png"
+    }
+}
