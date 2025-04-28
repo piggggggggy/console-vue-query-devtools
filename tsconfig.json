@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "ESNext",
+      "lib": ["DOM", "ES2020"],
+      "moduleResolution": "Node",
+      "esModuleInterop": true,
+      "strict": true,
+      "baseUrl": "./src",
+      "paths": {
+        "@sdk/*": ["sdk/*"],
+        "@content/*": ["content/*"],
+        "@devtools/*": ["devtools/*"]
+      },
+      "outDir": "./dist",
+      "types": ["vite/client"]
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  }

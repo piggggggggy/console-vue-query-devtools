@@ -4,7 +4,7 @@
       if (hook && hook.getQueries) {
         const queries = hook.getQueries();
         window.postMessage({
-          source: 'vue-query-devtools',
+          source: 'console-vue-query-devtools',
           type: 'QUERY_DEBUG_DATA',
           queries,
         }, '*');
@@ -13,3 +13,6 @@
   
     setInterval(trySendQueries, 2000);
   })();
+
+
+  
