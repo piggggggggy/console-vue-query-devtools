@@ -1,4 +1,5 @@
-import { QueryDebugMessage } from "@sdk/type";
+import { QueryDebugMessage } from "@console-vue-query-devtools/types";
+import '@console-vue-query-devtools/types/global';
 
 (function() {
     const trySendQueries = () => {

@@ -1,0 +1,13 @@
+{
+    "name": "@console-vue-query-devtools/extension",
+    "version": "0.0.1",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build"
+    },
+    "devDependencies": {
+      "@types/chrome": "^0.0.317",
+      "@console-vue-query-devtools/sdk": "*",
+      "@console-vue-query-devtools/types": "*"
+    }
+  }

@@ -3,7 +3,7 @@
     "name": "Console Vue Query Devtools",
     "version": "0.0.1",
     "description": "Console Vue Query Devtools (for cloudforet/console contributors)",
-    "devtools_page": "devtools/devtools.html",
+    "devtools_page": "devtools.html",
     "permissions": [],
     "icons": {
         "48": "assets/icon.png"

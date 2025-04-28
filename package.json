@@ -1,14 +1,19 @@
 {
   "name": "console-vue-query-devtools",
   "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:sdk": "pnpm --filter @console-vue-query-devtools/sdk dev",
+    "build:sdk": "pnpm --filter @console-vue-query-devtools/sdk build",
+    "dev:extension": "pnpm --filter @console-vue-query-devtools/extension dev",
+    "build:extension": "pnpm --filter @console-vue-query-devtools/extension build",
+    "build": "pnpm build:sdk && pnpm build:extension"
   },
+  "packageManager": "pnpm@8.14.0",
   "devDependencies": {
     "@tanstack/vue-query": "^5.74.7",
-    "@types/chrome": "^0.0.317",
     "@types/node": "^22.15.3",
     "typescript": "^5.8.3",
     "vite": "^6.3.3"
