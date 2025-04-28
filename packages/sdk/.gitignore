@@ -1,0 +1,9 @@
+# Build
+dist
+
+# NPM
+node_modules/
+node_modules.nosync/
+
+# Dev tools
+.DS_Store

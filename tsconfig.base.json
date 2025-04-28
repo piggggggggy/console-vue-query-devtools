@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "lib": ["DOM", "ESNext"],
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": ".",
+      "paths": {
+        "@console-vue-query-devtools/sdk": ["packages/sdk"],
+        "@console-vue-query-devtools/extension": ["packages/extension"],
+        "@console-vue-query-devtools/types": ["packages/types"],
+      },
+    },
+    "include": [
+        "packages",
+        "src"
+    ]
+}

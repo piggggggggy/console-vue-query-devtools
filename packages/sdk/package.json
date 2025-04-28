@@ -1,0 +1,40 @@
+{
+  "name": "@console-vue-query-devtools/sdk",
+  "version": "0.0.1",
+  "description": "Lightweight SDK for connecting Vue Query to custom DevTools extensions.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly --outDir dist"
+  },
+  "keywords": [
+    "vue-query",
+    "devtools",
+    "sdk",
+    "chrome-extension",
+    "vue2.7"
+  ],
+  "author": "pyt4105@gmail.com",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": ">=2.7.0 <3.0.0",
+    "@tanstack/vue-query": "^5.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9", 
+    "typescript": "^5.2.2"
+  }
+}
