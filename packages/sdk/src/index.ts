@@ -33,8 +33,7 @@ import Devtools from './Devtools.vue';
 }());
 
 export const ConsoleVueQueryDevtools = (
-  (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'development') ||
-  (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development')
+  process.env.NODE_ENV === 'development'
         ? Devtools 
         : () => null
 ) as DefineComponent<{}, {}, unknown>
