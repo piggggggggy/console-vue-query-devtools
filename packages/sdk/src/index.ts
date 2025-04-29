@@ -32,14 +32,9 @@ import Devtools from './Devtools.vue';
       };
 }());
 
-
-const isDevMode = (
-    (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'development') ||
-    (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development')
-);
-
 export const ConsoleVueQueryDevtools = (
-    isDevMode
+  (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'development') ||
+  (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development')
         ? Devtools 
         : () => null
 ) as DefineComponent<{}, {}, unknown>
