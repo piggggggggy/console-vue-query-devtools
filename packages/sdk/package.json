@@ -1,6 +1,6 @@
 {
   "name": "console-vue-query-devtools-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lightweight SDK for connecting Vue Query to custom DevTools extensions.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
