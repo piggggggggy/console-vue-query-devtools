@@ -1,5 +1,4 @@
 import type { QueryClient } from '@tanstack/vue-query';
-import '@console-vue-query-devtools/types/global';
 
 (function () {
     if (typeof window === 'undefined') return;

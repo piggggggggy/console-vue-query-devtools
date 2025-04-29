@@ -1,5 +1,5 @@
 import type { QueryClient } from '@tanstack/vue-query';
-import type { ConsoleVueQueryDevtoolsHook } from '@console-vue-query-devtools/types';
+import type { ConsoleVueQueryDevtoolsHook } from './types/devtools-hook';
 
 declare global {
   interface Window {

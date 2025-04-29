@@ -13,7 +13,9 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [],
+      external: [
+        './src/types'
+      ],
       output: {
         globals: {}
       }
@@ -22,7 +24,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@console-vue-query-devtools/types/global': resolve(__dirname, '../types/global.d.ts'),
     },
   },
 });

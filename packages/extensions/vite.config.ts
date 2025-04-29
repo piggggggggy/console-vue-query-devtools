@@ -30,7 +30,8 @@ export default defineConfig({
         '@': resolve(__dirname, './src'),
         '@content': resolve(__dirname, './src/content'),
         '@devtools': resolve(__dirname, './src/devtools'),
-        '@console-vue-query-devtools/types/global': resolve(__dirname, '../types/global.d.ts'),
+        '@console-vue-query-devtools-sdk/src/types': resolve(__dirname, '../sdk/src/types/devtools-hook.ts'),
+        '@console-vue-query-devtools-sdk/src/global': resolve(__dirname, '../sdk/src/global.d.ts'),
     },
   }
 }); 

@@ -1,4 +1,4 @@
-import { DevToolsIncomingMessage, DevToolsOutgoingMessage } from "@console-vue-query-devtools/types";
+import { DevToolsIncomingMessage, DevToolsOutgoingMessage } from "@console-vue-query-devtools-sdk/src/types";
 
 // Inject the injected.js into the page
 const script = document.createElement('script');

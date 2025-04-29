@@ -1,4 +1,4 @@
-import { DevToolsOutgoingMessage, ConsoleVueQueryDevtoolsQuery } from "@console-vue-query-devtools/types";
+import { DevToolsOutgoingMessage, ConsoleVueQueryDevtoolsQuery } from "@console-vue-query-devtools-sdk/src/types";
 
 let queries: ConsoleVueQueryDevtoolsQuery[] = [];
 
