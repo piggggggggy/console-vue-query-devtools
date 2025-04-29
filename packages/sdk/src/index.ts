@@ -1,4 +1,6 @@
 import type { QueryClient } from '@tanstack/vue-query';
+import { DefineComponent } from 'vue';
+import Devtools from './Devtools.vue';
 
 (function () {
     if (typeof window === 'undefined') return;
@@ -22,3 +24,15 @@ import type { QueryClient } from '@tanstack/vue-query';
         }
       };
 }());
+
+
+const isDevMode = (
+  (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'development') ||
+  (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development')
+);
+
+export const ConsoleVueQueryDevtools = (
+  isDevMode
+    ? Devtools 
+    : () => null
+) as DefineComponent<{}, {}, unknown>

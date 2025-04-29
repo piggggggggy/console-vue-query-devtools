@@ -7,7 +7,6 @@
         "@/*": ["./*"],
         "@content": ["content/*"],
         "@devtools": ["devtools/*"],
-        "@console-vue-query-devtools-sdk/src/types": ["../../sdk/src/types/devtools-hook.ts"],
         "@console-vue-query-devtools-sdk/src/global": ["../../sdk/src/global.d.ts"]
       }
     },

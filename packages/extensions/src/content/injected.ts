@@ -1,5 +1,4 @@
-import '@console-vue-query-devtools-sdk/src/global';
-import { QueryDebugMessage } from '@console-vue-query-devtools-sdk/src/types';
+import { QueryDebugMessage } from '@console-vue-query-devtools-sdk/src/global';
 (function() {
     const trySendQueries = () => {
       const hook = window.__VUE_QUERY_DEVTOOLS__;

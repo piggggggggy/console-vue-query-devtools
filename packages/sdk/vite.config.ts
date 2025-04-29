@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue2';
 import { resolve } from 'path';
 
 export default defineConfig({
+  plugins: [vue()],
   build: {
     outDir: 'dist',
     emptyOutDir: true,
@@ -14,10 +16,14 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        './src/types'
+        'vue',
+        '@tanstack/vue-query'
       ],
       output: {
-        globals: {}
+        globals: {
+          'vue': 'Vue',
+          '@tanstack/vue-query': 'VueQuery'
+        }
       }
     }
   },
