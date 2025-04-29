@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { useQueryClient } from '@tanstack/vue-query';
-import { nextTick, onMounted } from 'vue';
+import { onMounted } from 'vue';
+
+const client = useQueryClient()
 
 onMounted(() => {
-    nextTick(() => {
-        try {
-            const client = useQueryClient()
-            window.__VUE_QUERY_DEVTOOLS__?.registerClient(client)
-            console.debug('[Devtools] QueryClient registered from Devtools.vue')
-        } catch (e) {
-            console.warn('[Devtools] Failed to register QueryClient:', e)
-        }
-  })
+    try {
+        window.__VUE_QUERY_DEVTOOLS__?.registerClient(client)
+        console.debug('[Devtools] QueryClient registered from Devtools.vue')
+    } catch (e) {
+        console.warn('[Devtools] Failed to register QueryClient:', e)
+    }
 });
 </script>
 
