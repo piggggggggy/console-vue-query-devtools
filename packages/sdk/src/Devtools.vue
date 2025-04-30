@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { useQueryClient } from '@tanstack/vue-query';
+import { QueryClient, useQueryClient } from '@tanstack/vue-query';
 import { onMounted } from 'vue';
 
-const client = useQueryClient()
+interface Props {
+    client?: QueryClient;
+}
+
+const props = defineProps<Props>()
+
+const client = props.client || useQueryClient()
 
 onMounted(() => {
     try {
