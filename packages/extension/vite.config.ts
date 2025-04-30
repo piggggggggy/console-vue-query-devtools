@@ -31,6 +31,7 @@ export default defineConfig({
         '@content': resolve(__dirname, './src/content'),
         '@devtools': resolve(__dirname, './src/devtools'),
         '@console-vue-query-devtools-sdk/src/global': resolve(__dirname, '../sdk/src/global.d.ts'),
+        '@console-vue-query-devtools/eslint-config-custom': resolve(__dirname, '../eslint-config-custom/index.ts'),
     },
   }
 }); 

@@ -13,7 +13,7 @@
       "paths": {
         "console-vue-query-devtools-sdk": ["packages/sdk"],
         "@console-vue-query-devtools/extension": ["packages/extension"],
-        "@console-vue-query-devtools/types": ["packages/types"],
+        "@console-vue-query-devtools/eslint-config-custom": ["packages/eslint-config-custom"]
       },
     },
     "include": [
