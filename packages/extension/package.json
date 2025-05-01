@@ -3,10 +3,14 @@
     "version": "0.0.1",
     "scripts": {
       "dev": "vite",
-      "build": "vite build"
+      "build": "vite build",
+      "eslint": "eslint --max-warnings=0 .",
+      "eslint:fix": "eslint --fix .",
+      "lint": "npm run eslint"
     },
     "devDependencies": {
       "@types/chrome": "^0.0.317",
-      "console-vue-query-devtools-sdk": "*"
+      "console-vue-query-devtools-sdk": "*",
+      "vue": "^3.5.13"
     }
   }
