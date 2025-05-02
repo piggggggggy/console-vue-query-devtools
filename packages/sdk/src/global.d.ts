@@ -16,8 +16,9 @@ export interface ConsoleQueryMessageData {
     queryHash: string;
     state: QueryState;
     gcTime: number;
-    staleTime: number;
-    enabled: boolean;
+    staleTime?: number;
+    enabled?: boolean;
+    observerCount: number;
 }
 
 export interface QueryDebugMessage {
