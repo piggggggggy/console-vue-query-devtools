@@ -1,5 +1,5 @@
 chrome.devtools.panels.create(
-    'Console Vue Query Devtools',
+    'Vue Query',
     'assets/icon.png',
     'panel.html',
     (panel: chrome.devtools.panels.ExtensionPanel) => {
