@@ -49,6 +49,9 @@ importers:
       '@types/chrome':
         specifier: ^0.0.317
         version: 0.0.317
+      '@vitejs/plugin-vue':
+        specifier: ^5.2.3
+        version: 5.2.3(vite@6.3.3)(vue@3.5.13)
       console-vue-query-devtools-sdk:
         specifier: '*'
         version: link:../sdk
@@ -977,6 +980,17 @@ packages:
     dependencies:
       vite: 4.5.13(@types/node@22.15.3)
       vue: 2.7.16
+    dev: true
+
+  /@vitejs/plugin-vue@5.2.3(vite@6.3.3)(vue@3.5.13):
+    resolution: {integrity: sha512-IYSLEQj4LgZZuoVpdSUCw3dIynTWQgPlaRP6iAvMle4My0HdYwr5g5wQAfwOeHQBmYwEkqF70nRpSilr6PoUDg==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0
+      vue: ^3.2.25
+    dependencies:
+      vite: 6.3.3(@types/node@22.15.3)
+      vue: 3.5.13(typescript@5.8.3)
     dev: true
 
   /@vue/compiler-core@3.5.13:

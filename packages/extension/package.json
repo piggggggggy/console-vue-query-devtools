@@ -1,16 +1,17 @@
 {
-    "name": "@console-vue-query-devtools/extension",
-    "version": "0.0.1",
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "eslint": "eslint --max-warnings=0 .",
-      "eslint:fix": "eslint --fix .",
-      "lint": "npm run eslint"
-    },
-    "devDependencies": {
-      "@types/chrome": "^0.0.317",
-      "console-vue-query-devtools-sdk": "*",
-      "vue": "^3.5.13"
-    }
+  "name": "@console-vue-query-devtools/extension",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "eslint": "eslint --max-warnings=0 .",
+    "eslint:fix": "eslint --fix .",
+    "lint": "npm run eslint"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.317",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "console-vue-query-devtools-sdk": "*",
+    "vue": "^3.5.13"
   }
+}

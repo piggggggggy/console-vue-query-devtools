@@ -1,27 +1,29 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    plugins: [vue()],
     publicDir: './public',
     build: {
         outDir: 'dist',
         emptyOutDir: true,
         rollupOptions: {
             input: {
-                panel: resolve(__dirname, 'src/devtools/panel.ts'),
-                devtools: resolve(__dirname, 'src/devtools/devtools.ts'),
-                'content-script': resolve(__dirname, 'src/content/content-script.ts'),
-                injected: resolve(__dirname, 'src/content/injected.ts'),
+                'devtools/main': resolve(__dirname, 'src/devtools/main.ts'),
+                'devtools/devtools': resolve(__dirname, 'src/devtools/devtools.ts'),
+                'content/content-script': resolve(__dirname, 'src/content/content-script.ts'),
+                'content/injected': resolve(__dirname, 'src/content/injected.ts'),
             },
             output: {
                 entryFileNames: (chunkInfo) => {
                     console.log('[Vite] entryFileNames', chunkInfo);
-                    if (chunkInfo.name.includes('content')) return 'content/[name].js';
-                    if (chunkInfo.name.includes('injected')) return 'content/[name].js';
-                    return 'devtools/[name].js';
+                    if (chunkInfo.name.includes('content')) return '[name].js';
+                    if (chunkInfo.name.includes('injected')) return '[name].js';
+                    return '[name].js';
                 },
-                chunkFileNames: '[name].js',
-                assetFileNames: '[name].[ext]',
+                chunkFileNames: 'chunks/[name].[hash].js',
+                assetFileNames: 'assets/[name].[hash].[ext]',
             },
         },
     },
