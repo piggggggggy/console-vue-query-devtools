@@ -1,7 +1,7 @@
 import {
     DevToolsIncomingMessage,
     DevToolsOutgoingMessage,
-} from '@console-vue-query-devtools-sdk/src/global';
+} from 'console-vue-query-devtools-sdk/src/global';
 
 // Inject the injected.js into the page
 const script = document.createElement('script');

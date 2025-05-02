@@ -4,6 +4,7 @@ export const tabsRoot = style({
     display: 'flex',
     flexDirection: 'column',
     width: '100vw',
+    padding: '10px',
     boxShadow: '0 2px 10px var(--black-a4)',
 });
 

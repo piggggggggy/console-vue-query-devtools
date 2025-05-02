@@ -10,7 +10,7 @@ export const selectTrigger = style({
     lineHeight: '1',
     height: '35px',
     gap: '5px',
-    backgroundColor: 'white',
+    backgroundColor: 'var(--gray-1)',
     color: 'var(--violet-11)',
     boxShadow: '0 2px 10px var(--black-a7)',
     selectors: {

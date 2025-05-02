@@ -102,3 +102,10 @@ export const accordionChevron = style({
         },
     },
 });
+
+export const noQuerySection = style({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+});

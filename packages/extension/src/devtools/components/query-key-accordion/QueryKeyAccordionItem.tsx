@@ -1,51 +1,44 @@
 import { Accordion } from 'radix-ui';
 import { Text } from '@radix-ui/themes';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { ConsoleVueQueryDevtoolsQuery } from '@console-vue-query-devtools-sdk/src/global';
-import { forwardRef, useState } from 'react';
+import { ConsoleQueryMessageData } from 'console-vue-query-devtools-sdk/src/global';
 import {
-    accordionRoot,
     accordionItem,
-    accordionTrigger,
-    accordionContent,
     accordionContentText,
     accordionChevron,
     accordionHeader,
+    accordionTrigger,
     triggerText,
+    accordionContent,
 } from './index.css';
-import getRandomId from '@/devtools/utills/get-random-id';
+import { forwardRef, lazy, memo, Suspense } from 'react';
+
+const ReactJson = lazy(() => import('react-json-view'));
 
 interface Props {
-    query: ConsoleVueQueryDevtoolsQuery[];
+    query: ConsoleQueryMessageData;
 }
 
-export default function QueryKeyList({ query }: Props) {
-    const [selected, setSelected] = useState<string[]>([]);
-    const handleValueChange = (value: string[]) => {
-        setSelected(value);
-    };
+const QueryKeyAccordionItem = memo(function QueryKeyAccordionItem({ query }: Props) {
     return (
-        <Accordion.Root
-            className={accordionRoot}
-            type="multiple"
-            value={selected}
-            onValueChange={handleValueChange}
-        >
-            {query.map((item, index) => (
-                <Accordion.Item
-                    key={getRandomId()}
-                    className={accordionItem}
-                    value={`${item.queryKey.join('|')}-${index}`}
-                >
-                    <AccordionTrigger>{JSON.stringify(item.queryKey)}</AccordionTrigger>
-                    <AccordionContent>
-                        Yes. It adheres to the WAI-ARIA design pattern.
-                    </AccordionContent>
-                </Accordion.Item>
-            ))}
-        </Accordion.Root>
+        <Accordion.Item className={accordionItem} value={query.queryHash}>
+            <AccordionTrigger>{JSON.stringify(query.queryKey)}</AccordionTrigger>
+            <AccordionContent>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <ReactJson
+                        src={query}
+                        theme="paraiso"
+                        name={false}
+                        collapsed
+                        collapseStringsAfterLength={30}
+                        quotesOnKeys={false}
+                    />
+                </Suspense>
+            </AccordionContent>
+        </Accordion.Item>
     );
-}
+});
+export default QueryKeyAccordionItem;
 
 const AccordionTrigger = forwardRef<
     HTMLButtonElement,

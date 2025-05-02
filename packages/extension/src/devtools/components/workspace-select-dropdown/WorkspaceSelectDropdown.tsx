@@ -1,5 +1,5 @@
 import { Select } from 'radix-ui';
-import { forwardRef } from 'react';
+import { forwardRef, memo } from 'react';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import {
     selectTrigger,
@@ -17,7 +17,7 @@ interface Props {
     handleWorkspaceChange: (value: string) => void;
 }
 
-export default function WorkspaceSelectDropdown({
+const WorkspaceSelectDropdown = memo(function WorkspaceSelectDropdown({
     selectedWorkspace,
     workspaceList,
     handleWorkspaceChange,
@@ -36,34 +36,43 @@ export default function WorkspaceSelectDropdown({
                         <ChevronUpIcon />
                     </Select.ScrollUpButton>
                     <Select.Viewport className={selectViewport}>
-                        {workspaceList.map((item) => (
-                            <SelectItem key={item} value={item}>
-                                {item}
+                        {workspaceList.length > 0 ? (
+                            workspaceList.map((item) => (
+                                <SelectItem key={item} value={item}>
+                                    {item}
+                                </SelectItem>
+                            ))
+                        ) : (
+                            <SelectItem value="__none__" disabled>
+                                No Workspaces
                             </SelectItem>
-                        ))}
+                        )}
                     </Select.Viewport>
-                    <Select.ScrollDownButton className="SelectScrollButton">
+                    <Select.ScrollDownButton className={selectScrollButton}>
                         <ChevronDownIcon />
                     </Select.ScrollDownButton>
                 </Select.Content>
             </Select.Portal>
         </Select.Root>
     );
-}
+});
+export default WorkspaceSelectDropdown;
 
-const SelectItem = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<typeof Select.Item>>(
-    ({ children, className, ...props }, forwardedRef) => {
-        return (
-            <Select.Item
-                {...props}
-                ref={forwardedRef}
-                className={`${selectItem} ${className ?? ''}`}
-            >
-                <Select.ItemText>{children}</Select.ItemText>
-                <Select.ItemIndicator className={selectItemIndicator}>
-                    <CheckIcon />
-                </Select.ItemIndicator>
-            </Select.Item>
-        );
-    }
+const SelectItem = memo(
+    forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<typeof Select.Item>>(
+        ({ children, className, ...props }, forwardedRef) => {
+            return (
+                <Select.Item
+                    {...props}
+                    ref={forwardedRef}
+                    className={`${selectItem} ${className ?? ''}`}
+                >
+                    <Select.ItemText>{children}</Select.ItemText>
+                    <Select.ItemIndicator className={selectItemIndicator}>
+                        <CheckIcon />
+                    </Select.ItemIndicator>
+                </Select.Item>
+            );
+        }
+    )
 );
