@@ -1,3 +1,5 @@
+import { style } from '@vanilla-extract/css';
+
 export const tabsRoot = style({
     display: 'flex',
     flexDirection: 'column',
