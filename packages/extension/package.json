@@ -1,6 +1,7 @@
 {
   "name": "@console-vue-query-devtools/extension",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,9 +10,11 @@
     "lint": "npm run eslint"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.5",
     "@types/chrome": "^0.0.317",
     "@vitejs/plugin-vue": "^5.2.3",
     "console-vue-query-devtools-sdk": "*",
+    "tailwindcss": "^4.1.5",
     "vue": "^3.5.13"
   }
 }

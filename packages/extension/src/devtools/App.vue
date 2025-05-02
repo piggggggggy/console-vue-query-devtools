@@ -14,12 +14,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="p-4">
-        <h1 class="text-xl font-bold mb-2">Vue Query Devtools</h1>
+    <div class="h-screen p-4 bg-gray-700">
+        <h1 class="text-xl font-bold mb-2 text-gray-100">Vue Query Devtools</h1>
         <div v-for="query in queries" :key="query.queryKey.join(',')">
             <div class="flex items-center justify-between">
-                <span class="text-sm">{{ query.queryKey.join(',') }}</span>
-                <span class="text-sm">{{ query.state }}</span>
+                <span class="text-sm text-violet-500">{{ query.queryKey.join(',') }}</span>
+                <!-- <span class="text-sm text-gray-100">{{ query.state }}</span> -->
             </div>
         </div>
     </div>
