@@ -2,6 +2,8 @@ import type { QueryClient } from '@tanstack/vue-query';
 import { DefineComponent } from 'vue';
 import Devtools from './Devtools.vue';
 
+export const CUSTOM_EVENT_NAME = 'vue-query-client-registered';
+
 (function () {
     if (typeof window === 'undefined') return;
     if (window.__VUE_QUERY_DEVTOOLS__) return;
@@ -16,6 +18,8 @@ import Devtools from './Devtools.vue';
             }
             queryClient = client;
             console.log('[SDK] QueryClient registered.');
+                
+            window.dispatchEvent(new CustomEvent(CUSTOM_EVENT_NAME));
         },
         getQueryClient() {
           if (!queryClient) {
