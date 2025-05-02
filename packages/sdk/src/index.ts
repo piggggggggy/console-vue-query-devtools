@@ -2,6 +2,10 @@ import type { QueryClient } from '@tanstack/vue-query';
 import { DefineComponent } from 'vue';
 import Devtools from './Devtools.vue';
 import { CUSTOM_EVENT_NAME } from './constant';
+
+// Re-export constants
+export * from './constant';
+
 (function () {
     if (typeof window === 'undefined') return;
     if (window.__VUE_QUERY_DEVTOOLS__) return;
