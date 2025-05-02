@@ -17,23 +17,18 @@ import Devtools from './Devtools.vue';
             queryClient = client;
             console.log('[SDK] QueryClient registered.');
         },
-        getQueries() {
+        getQueryClient() {
           if (!queryClient) {
               console.warn('[SDK] No query client registered.');
-              return [];
+              return null;
           }
-          return queryClient.getQueryCache().getAll().map((query) => ({
-              queryKey: query.queryKey,
-              state: query.state,
-              observers: query.getObserversCount?.() ?? query.observers.length,
-              gcTime: query.gcTime,
-          }));
+          return queryClient;
         }
       };
 }());
 
 export const ConsoleVueQueryDevtools = (
-  process.env.NODE_ENV === 'development'
+    process.env.NODE_ENV === 'development'
         ? Devtools 
         : () => null
 ) as DefineComponent<{}, {}, unknown>
