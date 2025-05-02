@@ -1,16 +1,18 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [react(), vanillaExtractPlugin()],
     publicDir: './public',
     build: {
         outDir: 'dist',
         emptyOutDir: true,
+        cssCodeSplit: false,
         rollupOptions: {
             input: {
-                'devtools/main': resolve(__dirname, 'src/devtools/main.ts'),
+                'devtools/main': resolve(__dirname, 'src/devtools/main.tsx'),
                 'devtools/devtools': resolve(__dirname, 'src/devtools/devtools.ts'),
                 'content/content-script': resolve(__dirname, 'src/content/content-script.ts'),
                 'content/injected': resolve(__dirname, 'src/content/injected.ts'),
@@ -23,7 +25,12 @@ export default defineConfig({
                     return '[name].js';
                 },
                 chunkFileNames: 'chunks/[name].[hash].js',
-                assetFileNames: 'assets/[name].[hash].[ext]',
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+                        return 'assets/styles.css';
+                    }
+                    return 'assets/[name].[hash].[ext]';
+                },
             },
         },
     },
@@ -35,10 +42,6 @@ export default defineConfig({
             '@console-vue-query-devtools-sdk/src/global': resolve(
                 __dirname,
                 '../sdk/src/global.d.ts'
-            ),
-            '@console-vue-query-devtools/eslint-config-custom/extension': resolve(
-                __dirname,
-                '../eslint-config-custom/extension.js'
             ),
         },
     },

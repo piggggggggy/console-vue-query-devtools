@@ -3,15 +3,15 @@
     "compilerOptions": {
       "outDir": "dist",
       "baseUrl": "./src",
+      "jsx": "react-jsx",
       "paths": {
         "@/*": ["./*"],
         "@content": ["content/*"],
         "@devtools": ["devtools/*"],
-        "@console-vue-query-devtools-sdk/src/global": ["../../sdk/src/global.d.ts"],
-        "@console-vue-query-devtools/eslint-config-custom/extension": ["../eslint-config-custom/extension.js"]
+        "@console-vue-query-devtools-sdk/src/global": ["../../sdk/src/global.d.ts"]
       }
     },
     "include": [
       "src"
-    ],
+    ]
 }
