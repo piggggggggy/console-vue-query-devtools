@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ContextTabLayout({ query, tab }: Props) {
-    const [workspace, setWorkspace] = useState<string>('');
+    const [workspace, setWorkspace] = useState<string>('__none__');
 
     // computed
     const visibleQueries = useMemo(
@@ -26,7 +26,7 @@ export default function ContextTabLayout({ query, tab }: Props) {
 
     // init
     useEffect(() => {
-        if (tab === CONTEXT_TAB.WORKSPACE && workspaceList.length > 0 && !workspace) {
+        if (tab === CONTEXT_TAB.WORKSPACE && workspaceList.length > 0 && workspace === '__none__') {
             setWorkspace(workspaceList[0]);
         }
     }, [tab, workspaceList]);
@@ -62,22 +62,22 @@ const getVisibleQueries = (
     workspace: string
 ): ConsoleQueryMessageData[] => {
     if (tab === CONTEXT_TAB.WORKSPACE) {
-        return query
-            .filter(
-                (item) =>
-                    item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE && item.queryKey?.[1] === workspace
-            )
-            .map((item) => ({ ...item, queryKey: item.queryKey.slice(2) }));
+        return query.filter(
+            (item) =>
+                item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE && item.queryKey?.[1] === workspace
+        );
     }
-    return query
-        .filter((item) => item.queryKey?.[0] === tab)
-        .map((item) => ({ ...item, queryKey: item.queryKey.slice(1) }));
+    return query.filter((item) => item.queryKey?.[0] === tab);
 };
 
 const getWorkspaceList = (query: ConsoleQueryMessageData[]): string[] => {
     const set = new Set<string>();
     query.forEach((item) => {
-        if (item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE && typeof item.queryKey[1] === 'string') {
+        if (
+            item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE &&
+            typeof item.queryKey[1] === 'string' &&
+            !!item.queryKey[1]
+        ) {
             set.add(item.queryKey[1]);
         }
     });

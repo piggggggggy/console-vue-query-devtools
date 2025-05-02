@@ -11,7 +11,7 @@ import {
     triggerText,
     accordionContent,
 } from './index.css';
-import { forwardRef, lazy, memo, Suspense } from 'react';
+import { forwardRef, lazy, memo, Suspense, useMemo } from 'react';
 
 const ReactJson = lazy(() => import('react-json-view'));
 
@@ -20,9 +20,15 @@ interface Props {
 }
 
 const QueryKeyAccordionItem = memo(function QueryKeyAccordionItem({ query }: Props) {
+    const displayKey = useMemo(() => {
+        const key = query.queryKey ?? [];
+        if (key.length === 0) return [];
+        return key[0] === 'workspace' ? key.slice(2) : key.slice(1);
+    }, [query.queryKey]);
+
     return (
         <Accordion.Item className={accordionItem} value={query.queryHash}>
-            <AccordionTrigger>{JSON.stringify(query.queryKey)}</AccordionTrigger>
+            <AccordionTrigger>{`(${query.observerCount}) ${JSON.stringify(displayKey)}`}</AccordionTrigger>
             <AccordionContent>
                 <Suspense fallback={<div>Loading...</div>}>
                     <ReactJson

@@ -22,6 +22,10 @@ const WorkspaceSelectDropdown = memo(function WorkspaceSelectDropdown({
     workspaceList,
     handleWorkspaceChange,
 }: Props) {
+    if (selectedWorkspace === '__none__') {
+        return null;
+    }
+
     return (
         <Select.Root value={selectedWorkspace} onValueChange={handleWorkspaceChange}>
             <Select.Trigger className={selectTrigger} aria-label="Workspace">
@@ -61,6 +65,7 @@ export default WorkspaceSelectDropdown;
 const SelectItem = memo(
     forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<typeof Select.Item>>(
         ({ children, className, ...props }, forwardedRef) => {
+            console.log(props);
             return (
                 <Select.Item
                     {...props}

@@ -26,6 +26,7 @@ import { CUSTOM_EVENT_NAME } from 'console-vue-query-devtools-sdk';
                         gcTime: query.gcTime,
                         staleTime: query.options?.staleTime,
                         enabled: query.options?.enabled,
+                        observerCount: query.observers.length,
                     };
                 });
             const message: QueryDebugMessage = {
