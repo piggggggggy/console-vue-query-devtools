@@ -1,9 +1,7 @@
 import type { QueryClient } from '@tanstack/vue-query';
 import { DefineComponent } from 'vue';
 import Devtools from './Devtools.vue';
-
-export const CUSTOM_EVENT_NAME = 'vue-query-client-registered';
-
+import { CUSTOM_EVENT_NAME } from './constant';
 (function () {
     if (typeof window === 'undefined') return;
     if (window.__VUE_QUERY_DEVTOOLS__) return;
