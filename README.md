@@ -1,6 +1,6 @@
 # Console Vue Query Devtools
 
-A lightweight Chrome DevTools extension + SDK built specifically for the [Cloudforet Console](https://github.com/cloudforet-io/console), enabling debugging support for TanStack Query (Vue Query v5) in Vue 2.7 environments.
+A Chrome DevTools extension and SDK for debugging TanStack Query v5 in Vue 2.7, made for [Cloudforet Console](https://github.com/cloudforet-io/console).
 
 ## Background
 
@@ -47,10 +47,11 @@ import { ConsoleVueQueryDevtools } from 'console-vue-query-devtools-sdk';
 </template>
 ```
 
-No need to manually inject queryClient—it is automatically retrieved via useQueryClient() from Vue Query.
+You don’t need to manually pass a `queryClient`—the SDK automatically retrieves it via `useQueryClient()` internally.
 
 If you’re using a custom client, you can optionally pass it as a prop.
 
+Here’s how it looks inside the DevTools panel:
 ![Example: Console Vue Query Devtools](./docs/images/console-query-devtools-example.png)
 
 ## Features
@@ -70,6 +71,7 @@ If you’re using a custom client, you can optionally pass it as a prop.
 
 ## Status
 
-Actively maintained and used within the cloudforet-io/console codebase.
+This project is actively maintained and used daily in the [cloudforet-io/console](https://github.com/cloudforet-io/console) repository.
 
-Pull requests and feedback are welcome—this tool may be extended in the future to support other Vue 2.7-based TanStack Query projects.
+While it was originally developed for internal use, the devtools may benefit any Vue 2.7 project using TanStack Query v5.  
+Contributions, feedback, and suggestions are very welcome!
