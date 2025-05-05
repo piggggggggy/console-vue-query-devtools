@@ -19,7 +19,6 @@ export default defineConfig({
             },
             output: {
                 entryFileNames: (chunkInfo) => {
-                    console.log('[Vite] entryFileNames', chunkInfo);
                     if (chunkInfo.name.includes('content')) return '[name].js';
                     if (chunkInfo.name.includes('injected')) return '[name].js';
                     return '[name].js';
