@@ -4,12 +4,14 @@ A lightweight Chrome DevTools extension + SDK built specifically for the [Cloudf
 
 ## Background
 
-The official [TanStack Query Devtools](https://tanstack.com/query/latest/docs/framework/react/devtools) only supports Vue 3.x, leaving Vue 2.7 projects unsupported.  
-**Cloudforet Console**, an open-source cloud management platform frontend, is built using **Vue 2.7** and **TanStack Query v5**.  
-This devtools project was created to address that limitation.
+The official [TanStack Query Devtools](https://tanstack.com/query/v5/docs/framework/vue/devtools) currently only supports **Vue 3.x**, which means **Vue 2.7** users cannot inspect or debug their query states with the native tooling.
 
-Unlike general-purpose devtools, this extension is tightly coupled with Cloudforet’s **queryKey policy and structure**.  
-It reflects the **context-based queryKey system** used throughout the Console codebase, allowing visibility into `admin`, `user`, and `workspace` scoped queries with precise filtering and display.
+However, [**Cloudforet Console**](https://github.com/cloudforet-io/console) — the frontend for the open-source Cloud Management Platform **Cloudforet** — is built with **Vue 2.7** and **TanStack Query v5**. This devtools project was born to fill the tooling gap in that context.
+
+Unlike generic devtools, this extension is **tightly aligned with Cloudforet’s queryKey architecture**, which namespaces queries by scope (`admin`, `user`, `workspace`). The panel UI reflects this policy directly, providing scoped tabs and filtered inspection.
+
+> 🛠️ **Note for Cloudforet contributors**:  
+> This devtools was created specifically to support `cloudforet-io/console`. If you're contributing to that repository, this tool provides a consistent view into how queries are registered, cached, and grouped internally.
 
 ## Architecture
 
@@ -48,6 +50,8 @@ import { ConsoleVueQueryDevtools } from 'console-vue-query-devtools-sdk';
 No need to manually inject queryClient—it is automatically retrieved via useQueryClient() from Vue Query.
 
 If you’re using a custom client, you can optionally pass it as a prop.
+
+![Example: Console Vue Query Devtools](./docs/images/console-query-devtools-example.png)
 
 ## Features
 
