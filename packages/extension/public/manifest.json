@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Console Vue Query Devtools",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Console Vue Query Devtools (for cloudforet/console contributors)",
     "devtools_page": "devtools.html",
     "permissions": [],
