@@ -20,7 +20,7 @@ This is a **monorepo**, containing two main workspaces:
 
 ## Installation
 
-### Devtools Extension (Chrome)
+### 🔹 Devtools Extension (Chrome)
 
 Install the extension directly from the Chrome Web Store:  
 👉 [Console Vue Query Devtools – Chrome Web Store](https://chromewebstore.google.com/detail/console-vue-query-devtool/akehibhefmaginaifkoffdpnbekgeoje)
