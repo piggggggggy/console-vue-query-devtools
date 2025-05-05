@@ -1,12 +1,11 @@
-import { Tabs } from 'radix-ui';
+import * as Tabs from '@radix-ui/react-tabs';
 import { useState } from 'react';
-import { tabsRoot } from './index.css';
-import { ContextTabKey } from '../../types/context';
-import { CONTEXT_TAB } from '../../contants/context';
+import { tabsRoot } from '@/devtools/components/context-tabs/index.css';
+import { ContextTabKey } from '@/devtools/types/context';
+import { CONTEXT_TAB } from '@/devtools/contants/context';
 import { ConsoleQueryMessageData } from 'console-vue-query-devtools-sdk/src/global';
-import ContextTabHeader from './ContextTabHeader';
-import ContextTabLayout from './ContextTabLayout';
-
+import ContextTabHeader from '@/devtools/components/context-tabs/ContextTabHeader';
+import ContextTabLayout from '@/devtools/components/context-tabs/ContextTabLayout';
 interface Props {
     query: ConsoleQueryMessageData[];
 }

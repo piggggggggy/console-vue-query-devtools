@@ -1,9 +1,9 @@
-import { Accordion } from 'radix-ui';
+import * as Accordion from '@radix-ui/react-accordion';
 import { Text, Section } from '@radix-ui/themes';
 import { useState } from 'react';
-import { accordionRoot, noQuerySection } from './index.css';
+import { accordionRoot, noQuerySection } from '@/devtools/components/query-key-accordion/index.css';
 import { ConsoleQueryMessageData } from 'console-vue-query-devtools-sdk/src/global';
-import QueryKeyAccordionItem from './QueryKeyAccordionItem';
+import QueryKeyAccordionItem from '@/devtools/components/query-key-accordion/QueryKeyAccordionItem';
 
 interface Props {
     query: ConsoleQueryMessageData[];

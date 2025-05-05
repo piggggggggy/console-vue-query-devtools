@@ -6,8 +6,6 @@
       "jsx": "react-jsx",
       "paths": {
         "@/*": ["./*"],
-        "@content": ["content/*"],
-        "@devtools": ["devtools/*"],
       }
     },
     "include": [

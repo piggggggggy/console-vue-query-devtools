@@ -1,5 +1,5 @@
-import { Accordion } from 'radix-ui';
-import { Text } from '@radix-ui/themes';
+import * as Accordion from '@radix-ui/react-accordion';
+import { Spinner, Text } from '@radix-ui/themes';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { ConsoleQueryMessageData } from 'console-vue-query-devtools-sdk/src/global';
 import {
@@ -30,7 +30,7 @@ const QueryKeyAccordionItem = memo(function QueryKeyAccordionItem({ query }: Pro
         <Accordion.Item className={accordionItem} value={query.queryHash}>
             <AccordionTrigger>{`(${query.observerCount}) ${JSON.stringify(displayKey)}`}</AccordionTrigger>
             <AccordionContent>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Spinner />}>
                     <ReactJson
                         src={query}
                         theme="paraiso"

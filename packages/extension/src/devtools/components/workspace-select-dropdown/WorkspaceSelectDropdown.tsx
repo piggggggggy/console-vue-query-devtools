@@ -1,4 +1,4 @@
-import { Select } from 'radix-ui';
+import * as Select from '@radix-ui/react-select';
 import { forwardRef, memo } from 'react';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import {
@@ -9,7 +9,7 @@ import {
     selectItem,
     selectItemIndicator,
     selectScrollButton,
-} from './index.css';
+} from '@/devtools/components/workspace-select-dropdown/index.css';
 
 interface Props {
     selectedWorkspace: string;

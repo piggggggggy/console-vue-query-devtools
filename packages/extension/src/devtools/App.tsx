@@ -1,7 +1,7 @@
 import React from 'react';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
-import Layout from './Layout';
+import Layout from '@/devtools/Layout';
 function App() {
     return (
         <Theme appearance="dark" accentColor="violet" panelBackground="solid">
