@@ -34,6 +34,7 @@ const _getWorkspaceList = (query: ConsoleQueryMessageData[]): string[] => {
     query.forEach((item) => {
         if (
             Array.isArray(item.queryKey) &&
+            item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE &&
             typeof item.queryKey[1] === 'string' &&
             !!item.queryKey[1]
         ) {
