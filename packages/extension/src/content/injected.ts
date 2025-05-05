@@ -14,7 +14,8 @@ import { CUSTOM_EVENT_NAME } from 'console-vue-query-devtools-sdk';
 
         console.log('[Injected] QueryClient found. Starting subscription.');
 
-        queryClient.getQueryCache().subscribe(() => {
+        const throttleTime = 500;
+        const throttledQuery = _throttle(() => {
             const queries = queryClient
                 .getQueryCache()
                 .getAll()
@@ -35,6 +36,10 @@ import { CUSTOM_EVENT_NAME } from 'console-vue-query-devtools-sdk';
                 queries,
             };
             window.postMessage(message, '*');
+        }, throttleTime);
+
+        queryClient.getQueryCache().subscribe(() => {
+            throttledQuery();
         });
     };
 
@@ -43,3 +48,14 @@ import { CUSTOM_EVENT_NAME } from 'console-vue-query-devtools-sdk';
         init();
     });
 })();
+
+const _throttle = (fn: (...args: any[]) => void, delay: number) => {
+    let last = 0;
+    return (...args: any[]) => {
+        const now = Date.now();
+        if (now - last >= delay) {
+            last = now;
+            fn(...args);
+        }
+    };
+};
