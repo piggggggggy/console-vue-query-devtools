@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 export const tabsRoot = style({
     display: 'flex',
     flexDirection: 'column',
-    width: '100vw',
+    width: 'calc(100vw - 36px)',
     maxWidth: '100%',
     padding: '10px',
     boxShadow: '0 2px 10px var(--black-a4)',
@@ -19,14 +19,15 @@ export const tabsList = style({
 export const tabsTrigger = style({
     fontFamily: 'inherit',
     backgroundColor: 'var(--mauve-3)',
-    padding: '0 20px',
-    maxWidth: '100px',
-    height: '45px',
+    padding: '0 10px',
+    width: '33%',
+    maxWidth: '80px',
+    height: '40px',
     flex: 1,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '15px',
+    fontSize: '12px',
     lineHeight: 1,
     color: 'var(--mauve-11)',
     userSelect: 'none',
@@ -49,6 +50,12 @@ export const tabsTrigger = style({
             boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
         },
     },
+});
+
+export const tabsTriggerText = style({
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
 });
 
 export const tabsContent = style({

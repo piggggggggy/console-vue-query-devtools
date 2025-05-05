@@ -1,57 +1,48 @@
 import { ConsoleQueryMessageData } from 'console-vue-query-devtools-sdk/src/global';
 import { ContextTabKey } from '@/devtools/types/context';
 import { CONTEXT_TAB } from '@/devtools/contants/context';
-import { Tabs } from 'radix-ui';
-import QueryKeyAccordion from '../query-key-accordion/QueryKeyAccordion';
-import WorkspaceSelectDropdown from '../workspace-select-dropdown/WorkspaceSelectDropdown';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { tabsContent } from './index.css';
-
+import { useCallback, useMemo, useState } from 'react';
+import useDebounce from '@/devtools/utils/use-debounce';
+import ContextTabAdmin from '@/devtools/components/context-tabs/ContextTabContentAdmin';
+import ContextTabWorkspace from '@/devtools/components/context-tabs/ContextTabContentWorkspace';
+import ContextTabUser from '@/devtools/components/context-tabs/ContextTabContentUser';
+import QueryToolBox from '@/devtools/components/query-tool-box/QueryToolBox';
+import { useWorkspaceList } from '@/devtools/hooks/use-workspace-list';
 interface Props {
     query: ConsoleQueryMessageData[];
     tab: ContextTabKey;
 }
 
 export default function ContextTabLayout({ query, tab }: Props) {
-    const [workspace, setWorkspace] = useState<string>('__none__');
+    const [searchText, setSearchText] = useState('');
+    const debouncedSearchText = useDebounce(searchText, 300);
+    const { workspace, setWorkspace, workspaceList } = useWorkspaceList(tab, query);
 
     // computed
     const visibleQueries = useMemo(
-        () => getVisibleQueries(query, tab, workspace),
-        [query, tab, workspace]
+        () => getVisibleQueries(query, tab, workspace, debouncedSearchText),
+        [query, tab, workspace, debouncedSearchText]
     );
-    const workspaceList = useMemo(() => {
-        return tab === CONTEXT_TAB.WORKSPACE ? getWorkspaceList(query) : [];
-    }, [query, tab]);
-
-    // init
-    useEffect(() => {
-        if (tab === CONTEXT_TAB.WORKSPACE && workspaceList.length > 0 && workspace === '__none__') {
-            setWorkspace(workspaceList[0]);
-        }
-    }, [tab, workspaceList]);
 
     // Event
     const handleWorkspaceChange = useCallback((value: string) => {
         setWorkspace(value);
     }, []);
+    const handleSearchTextChange = (value: string) => {
+        setSearchText(value);
+    };
 
     return (
         <>
-            <Tabs.Content className={tabsContent} value={CONTEXT_TAB.ADMIN}>
-                <QueryKeyAccordion query={visibleQueries} />
-            </Tabs.Content>
-            <Tabs.Content className={tabsContent} value={CONTEXT_TAB.WORKSPACE}>
-                <WorkspaceSelectDropdown
-                    selectedWorkspace={workspace}
-                    workspaceList={workspaceList}
-                    handleWorkspaceChange={handleWorkspaceChange}
-                />
-                <QueryKeyAccordion query={visibleQueries} />
-            </Tabs.Content>
-            <Tabs.Content className={tabsContent} value={CONTEXT_TAB.USER}>
-                <QueryKeyAccordion query={visibleQueries} />
-            </Tabs.Content>
+            <QueryToolBox searchText={searchText} onSearchTextChange={handleSearchTextChange} />
+            <ContextTabAdmin visibleQueries={visibleQueries} />
+            <ContextTabWorkspace
+                visibleQueries={visibleQueries}
+                workspace={workspace}
+                workspaceList={workspaceList}
+                handleWorkspaceChange={handleWorkspaceChange}
+            />
+            <ContextTabUser visibleQueries={visibleQueries} />
         </>
     );
 }
@@ -59,27 +50,22 @@ export default function ContextTabLayout({ query, tab }: Props) {
 const getVisibleQueries = (
     query: ConsoleQueryMessageData[],
     tab: ContextTabKey,
-    workspace: string
+    workspace: string,
+    searchText: string
 ): ConsoleQueryMessageData[] => {
     if (tab === CONTEXT_TAB.WORKSPACE) {
         return query.filter(
             (item) =>
-                item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE && item.queryKey?.[1] === workspace
+                Array.isArray(item.queryKey) &&
+                item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE &&
+                item.queryKey?.[1] === workspace &&
+                item.queryHash?.includes(searchText)
         );
     }
-    return query.filter((item) => item.queryKey?.[0] === tab);
-};
-
-const getWorkspaceList = (query: ConsoleQueryMessageData[]): string[] => {
-    const set = new Set<string>();
-    query.forEach((item) => {
-        if (
-            item.queryKey?.[0] === CONTEXT_TAB.WORKSPACE &&
-            typeof item.queryKey[1] === 'string' &&
-            !!item.queryKey[1]
-        ) {
-            set.add(item.queryKey[1]);
-        }
-    });
-    return Array.from(set);
+    return query.filter(
+        (item) =>
+            Array.isArray(item.queryKey) &&
+            item.queryKey?.[0] === tab &&
+            item.queryHash?.includes(searchText)
+    );
 };

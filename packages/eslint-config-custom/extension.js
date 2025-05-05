@@ -23,6 +23,7 @@ module.exports = {
       'no-trailing-spaces': 'error',
       'no-multi-spaces': 'error',
       'prettier/prettier': 'error',
-      '@typescript-eslint/no-require-imports': 'off'
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-explicit-any': 'off'
     }
 }; 
